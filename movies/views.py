@@ -16,7 +16,7 @@ class MovieStatisticsView(views.APIView):
         data = {}
 
         for movie in Movie.objects.all():
-            data[movie.slug] = movie.get_average_rating()
+            data[(movie.id, movie.title)] = movie.get_average_rating()
 
         return Response(data)
 
