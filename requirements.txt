@@ -4,3 +4,4 @@ sqlparse==0.4.4
 typing_extensions==4.8.0
 appsignal==1.0.1
 opentelemetry-instrumentation-django==0.42b0
+djangorestframework==3.14.0
