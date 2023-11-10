@@ -13,10 +13,14 @@ class MovieViewSet(viewsets.ModelViewSet):
 class MovieStatisticsView(views.APIView):
 
     def get(self, request, format=None):
-        data = {}
+        data = []
 
         for movie in Movie.objects.all():
-            data[(movie.id, movie.title)] = movie.get_average_rating()
+            data.append({
+                'id': movie.id,
+                'title': movie.title,
+                'average_rating': movie.get_average_rating(),
+            })
 
         return Response(data)
 
@@ -29,6 +33,9 @@ class MovieReviewView(views.APIView):
 
         if movie_id is None or rating is None:
             return Response({'detail': 'Please provide a movie and a rating.'}, status=400)
+
+        if not isinstance(rating, int) or rating < 1 or rating > 5:
+            return Response({'detail': 'Rating must be an integer between 1 and 5.'}, status=400)
 
         try:
             MovieReview.objects.create(

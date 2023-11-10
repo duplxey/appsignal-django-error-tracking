@@ -9,6 +9,10 @@ class Movie(models.Model):
 
     def get_average_rating(self):
         reviews = MovieReview.objects.filter(movie=self)
+
+        if len(reviews) == 0:
+            return 0
+
         return sum(review.rating for review in reviews) / len(reviews)
 
     def __str__(self):
