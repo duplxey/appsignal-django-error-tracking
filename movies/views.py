@@ -1,18 +1,17 @@
-from rest_framework import viewsets, views
+from rest_framework import viewsets, status
+from rest_framework.decorators import action
 from rest_framework.response import Response
 
-from movies.models import Movie, MovieReview
-from movies.serializers import MovieSerializer
+from movies.models import Movie
+from movies.serializers import MovieSerializer, MovieReviewSerializer
 
 
 class MovieViewSet(viewsets.ModelViewSet):
     queryset = Movie.objects.all()
     serializer_class = MovieSerializer
 
-
-class MovieStatisticsView(views.APIView):
-
-    def get(self, request, format=None):
+    @action(detail=False, methods=['get'])
+    def statistics(self, request, pk=None):
         data = []
 
         for movie in Movie.objects.all():
@@ -24,24 +23,12 @@ class MovieStatisticsView(views.APIView):
 
         return Response(data)
 
+    @action(detail=True, methods=['post'])
+    def review(self, request, pk=None):
+        serializer = MovieReviewSerializer(data=request.data)
 
-class MovieReviewView(views.APIView):
+        if serializer.is_valid():
+            serializer.save()
+            return Response({'success': 'Review created.'}, status=status.HTTP_201_CREATED)
 
-    def post(self, request, format=None):
-        movie_id = request.data.get('movie', None)
-        rating = request.data.get('rating', None)
-
-        if movie_id is None or rating is None:
-            return Response({'detail': 'Please provide a movie and a rating.'}, status=400)
-
-        if not isinstance(rating, int) or rating < 1 or rating > 5:
-            return Response({'detail': 'Rating must be an integer between 1 and 5.'}, status=400)
-
-        try:
-            MovieReview.objects.create(
-                movie=Movie.objects.get(id=movie_id),
-                rating=request.data.get('rating'),
-            )
-            return Response({'success': 'Review created.'}, status=201)
-        except Movie.DoesNotExist:
-            return Response({'detail': 'Movie not found.'}, status=404)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

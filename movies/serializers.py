@@ -9,7 +9,7 @@ class MovieSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class InlineMovieReviewSerializer(serializers.ModelSerializer):
+class MovieReviewSerializer(serializers.ModelSerializer):
     class Meta:
         model = MovieReview
-        fields = ['id', 'rating', 'created_at', 'updated_at']
+        fields = ['movie', 'rating']
