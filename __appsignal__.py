@@ -1,3 +1,5 @@
+import os
+
 from appsignal import Appsignal
 
 appsignal = Appsignal(
@@ -6,5 +8,5 @@ appsignal = Appsignal(
     # Please do not commit this key to your source control management system.
     # Move this to your app's security credentials or environment variables.
     # https://docs.appsignal.com/python/configuration/options.html#option-push_api_key
-    push_api_key='<your_push_api_key>',
+    push_api_key=os.getenv('APPSIGNAL_PUSH_API_KEY'),
 )
