@@ -29,6 +29,14 @@ class MovieViewSet(viewsets.ModelViewSet):
 
         if serializer.is_valid():
             serializer.save()
-            return Response({'success': 'Review created.'}, status=status.HTTP_201_CREATED)
+            return Response({'success': 'Review created.'}, status=201)
 
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response(serializer.errors, status=400)
+
+    @action(detail=False, methods=['get'])
+    def todo(self, request, pk=None):
+        data = {
+            'detail': 'This endpoint is not implemented yet.',
+        }
+
+        return Response(data)

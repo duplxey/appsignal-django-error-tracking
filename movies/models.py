@@ -26,11 +26,11 @@ class MovieReview(models.Model):
         MaxValueValidator(5),
     ])
 
-    def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
+    def save(self, force_insert=False, force_update=False, using=None, update=None):
         if self.rating < 1 or self.rating > 5:
             raise ValueError('Rating must be between 1 and 5.')
 
-        super().save(force_insert, force_update, using, update_fields)
+        super().save(force_insert, force_update, using, update)
 
     def __str__(self):
         return f'{self.movie.title} - {self.rating}'
