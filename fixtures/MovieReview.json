@@ -1,0 +1,50 @@
+[
+{
+    "model": "movies.moviereview",
+    "pk": 1,
+    "fields": {
+        "movie": 1,
+        "rating": 5
+    }
+},
+{
+    "model": "movies.moviereview",
+    "pk": 2,
+    "fields": {
+        "movie": 1,
+        "rating": 4
+    }
+},
+{
+    "model": "movies.moviereview",
+    "pk": 3,
+    "fields": {
+        "movie": 1,
+        "rating": 5
+    }
+},
+{
+    "model": "movies.moviereview",
+    "pk": 4,
+    "fields": {
+        "movie": 2,
+        "rating": 4
+    }
+},
+{
+    "model": "movies.moviereview",
+    "pk": 5,
+    "fields": {
+        "movie": 2,
+        "rating": 5
+    }
+},
+{
+    "model": "movies.moviereview",
+    "pk": 6,
+    "fields": {
+        "movie": 2,
+        "rating": 3
+    }
+}
+]

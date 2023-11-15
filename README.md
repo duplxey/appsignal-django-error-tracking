@@ -30,6 +30,13 @@ Read at: []()
     $ python manage.py migrate
     ```
    
+1. Load the fixtures to populate the database:
+
+    ```sh
+    $ python manage.py loaddata fixtures/Movie.json --app app.Movie
+    $ python manage.py loaddata fixtures/MovieReview.json --app app.MovieReview
+    ```
+   
 1. Run the development server:
 
     ```sh

@@ -1,0 +1,29 @@
+[
+{
+    "model": "movies.movie",
+    "pk": 1,
+    "fields": {
+        "title": "American Psycho",
+        "description": "A dark comedy-drama that follows the life of Patrick Bateman.",
+        "release_year": 2000
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 2,
+    "fields": {
+        "title": "American Psycho",
+        "description": "A dark comedy-drama that follows the life of Patrick Bateman.",
+        "release_year": 2000
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 3,
+    "fields": {
+        "title": "Fight Club",
+        "description": "A drama that tells the story of an insomniac office worker.",
+        "release_year": 1999
+    }
+}
+]
