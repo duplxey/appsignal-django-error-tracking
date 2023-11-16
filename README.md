@@ -1,8 +1,8 @@
 # Track Errors in Django with AppSignal
 
-...
+This repository demonstrates how to use AppSignal to track errors in a Django application.
 
-Read at: []()
+Read the article at: ...
 
 ## Development Setup
 

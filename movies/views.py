@@ -32,11 +32,3 @@ class MovieViewSet(viewsets.ModelViewSet):
             return Response({'success': 'Review created.'}, status=201)
 
         return Response(serializer.errors, status=400)
-
-    @action(detail=False, methods=['get'])
-    def todo(self, request, pk=None):
-        data = {
-            'detail': 'This endpoint is not implemented yet.',
-        }
-
-        return Response(data)
