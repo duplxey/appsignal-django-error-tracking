@@ -19,7 +19,7 @@
 },
 {
     "model": "movies.movie",
-    "pk": 2,
+    "pk": 3,
     "fields": {
         "title": "A Clockwork Orange",
         "description": "A dystopian crime film based on the novel by Anthony Burgess.",
